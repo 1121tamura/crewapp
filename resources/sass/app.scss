@@ -23,3 +23,7 @@ $fa-font-path: "../webfonts"; //追記
 
 // ここから追記
 @import "sign_in";
+
+@import "show"; //この行を追記
+
+@import "edit"; //この行を追加する
