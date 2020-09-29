@@ -36,4 +36,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // ここから下を追記
+    public function toUserId()
+    {
+        return $this->hasMany('App\Reaction', 'to_user_id', 'id');
+    }
+
+    public function fromUserId()
+    {
+        return $this->hasMany('App\Reaction', 'from_user_id', 'id');
+    }
+    // ここから追加
+    public function chatMessages()
+    {
+        return $this->hasMany('App\ChatMessage');
+    }
+
+    public function chatRoomUsers()
+    {
+        return $this->hasMany('App\ChatRoomUsers');
+    }
+    // ここまで追加
 }

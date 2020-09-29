@@ -26,3 +26,11 @@ Route::get('/', function () {
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/matching', 'MatchingController@index')->name('matching'); //追加
+
+// ここから追加
+Route::group(['prefix' => 'chat', 'middleware' => 'auth'], function () {
+    Route::post('show', 'ChatController@show')->name('chat.show');
+    Route::post('chat', 'ChatController@chat')->name('chat.chat'); // この行を追加
+});
+//ここまで追加
